@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900|Permanent+Marker');
+
+// COLORS
+$purple: #443759;
+$blue: #92f6fe;
+$yellow: #fff822;
+$black: #2e2e2e;
+$white: #f7f7f9;
+
+// DIMENSIONS
+$base-padding: 30px;
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: $purple;
+	font-family: Montserrat, Arial, sans-serif;
+	font-size: 20px;
+}
+
+.frame {
+	display: flex;
+	flex-direction: column;
+}
+
+.menu {
+	width: 100%;
+	padding: $base-padding;
+}
+
+.menu ul {
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu li {
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.menu li a {
+	color: $white;
+	text-decoration: none;
+}
+
+.menu li a.active {
+	text-decoration: underline;
+	color: $blue;
+}
+
+.menu .menu-right {
+	display: inline-block;
+	float: right;
+}
+
+.menu .menu-right img {
+	height: 1em;
+}
+
+.container {
+	padding: 0 $base-padding;
+	flex-grow: 1;
+}
+
+.item-set {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.item {
+	background: rgba($white, 0.25);
+	margin-bottom: 2%;
+	width: 15%;
+	padding: 15px;
+	margin-right: 2%;
+
+	&:nth-child(6n) {
+		margin-right: 0;
+	}
+
+	// @media (min-width: 48rem) {
+	// }
+
+	&:before {
+		content: '';
+		float: left;
+		padding-top: 100%;
+	}
+
+	&.active {
+		color: $blue;
+		font-weight: 700;
+	}
+}
+
+.item-icon {
+	display: block;
+	height: 66.6666%;
+	text-align: center;
+	// padding: 5%;
+	// margin: 15px auto;
+}
+
+.item-icon img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.item-text {
+	height: 33.3333%;
+	text-align: center;
+}
+
+.playbar {
+	width: 100%;
+	background: $black;
+	padding: $base-padding;
+}
+
+.playbar .play {
+	height: 32px;
+	margin-right: $base-padding;
+}
+
+.playbar .volume {
+	width: 200px;
+}

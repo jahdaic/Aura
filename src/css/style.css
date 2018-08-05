@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900|Permanent+Marker");
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
+body {
+  background: #443759;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 20px; }
+
+.frame {
+  display: flex;
+  flex-direction: column; }
+
+.menu {
+  width: 100%;
+  padding: 30px; }
+
+.menu ul {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.menu li {
+  display: inline-block;
+  margin-right: 30px; }
+
+.menu li a {
+  color: #f7f7f9;
+  text-decoration: none; }
+
+.menu li a.active {
+  text-decoration: underline;
+  color: #92f6fe; }
+
+.menu .menu-right {
+  display: inline-block;
+  float: right; }
+
+.menu .menu-right img {
+  height: 1em; }
+
+.container {
+  padding: 0 30px;
+  flex-grow: 1; }
+
+.item-set {
+  display: flex;
+  flex-wrap: wrap; }
+
+.item {
+  background: rgba(247, 247, 249, 0.25);
+  margin-bottom: 2%;
+  width: 15%;
+  padding: 15px;
+  margin-right: 2%; }
+  .item:nth-child(6n) {
+    margin-right: 0; }
+  .item:before {
+    content: '';
+    float: left;
+    padding-top: 100%; }
+  .item.active {
+    color: #92f6fe;
+    font-weight: 700; }
+
+.item-icon {
+  display: block;
+  height: 66.6666%;
+  text-align: center; }
+
+.item-icon img {
+  max-height: 100%;
+  max-width: 100%; }
+
+.item-text {
+  height: 33.3333%;
+  text-align: center; }
+
+.playbar {
+  width: 100%;
+  background: #2e2e2e;
+  padding: 30px; }
+
+.playbar .play {
+  height: 32px;
+  margin-right: 30px; }
+
+.playbar .volume {
+  width: 200px; }
