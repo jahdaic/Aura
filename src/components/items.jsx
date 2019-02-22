@@ -1,24 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Item from './item';
+import LightItem from './light-item';
 import MusicItem from './music-item';
+import EnvironmentItem from './environment-item';
+import SoundItem from './sound-item';
 
 const Items = props => {
 	const { type, items } = props;
 
 	return (
-		<div className="item-set">
+		<div className="item-set row around-xs">
 			{(items || []).map(item => {
 				switch (type) {
 					case 'lights':
-						return <Item key={item.name} data={item} type={type} />;
+						return <LightItem key={item.name} data={item} />;
 					case 'music':
 						return <MusicItem key={item.name} data={item} />;
 					case 'environments':
-						return <Item key={item.name} data={item} type={type} />;
+						return <EnvironmentItem key={item.name} data={item} />;
 					case 'sounds':
-						return <Item key={item.name} data={item} type={type} />;
+						return <SoundItem key={item.name} data={item} />;
 					default:
 						return null;
 				}

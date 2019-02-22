@@ -1,10 +1,12 @@
 import React from 'react';
 import Items from '../components/items';
 
-const Lights = () => (
-	<div>
-		<Items type="lights" />
-	</div>
-);
+const Lights = props => {	
+	return (
+		<div className="content">
+			<Items type="lights" />
+		</div>
+	);
+};
 
 export default Lights;

@@ -1,8 +1,8 @@
 import React from 'react';
 import Items from '../components/items';
 
-const Sounds = () => (
-	<div>
+const Sounds = props => (
+	<div className="content">
 		<Items type="sounds" />
 	</div>
 );

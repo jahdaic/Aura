@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Item from './item';
 import * as appActions from '../actions/app-actions';
-
-import * as icons from '../images/icons';
-import * as music from '../audio/music';
-import { Howl } from 'howler';
 
 class MusicItem extends Component {
 	constructor(props) {
@@ -13,40 +10,17 @@ class MusicItem extends Component {
 
 		this.executePayload = this.executePayload.bind(this);
 
-		this.state = {
-			payload: null,
-		};
-	}
-
-	componentDidMount() {
-		const { data, type } = this.props;
-
-		if (!data.target) return false;
-
-		this.setState({
-			payload: new Howl({
-				src: music[data.target],
-				loop: true,
-				preload: true,
-			}),
-		});
-	}
-
-	componentDidUpdate() {
-		const { payload } = this.state;
-
-		if (payload && !this.isActive() && payload.playing()) payload.stop();
+		this.state = {};
 	}
 
 	executePayload() {
-		const { payload } = this.state;
 		const { data } = this.props;
 
-		if (this.isActive()) {
-			payload.stop();
-			appActions.setPlayingMusic(null);
+		if (data.target === 'off') {
+			appActions.musicOff();
+		} else if (this.isActive()) {
+			appActions.removePlayingMusic(data.target);
 		} else {
-			payload.play();
 			appActions.setPlayingMusic(data.target);
 		}
 	}
@@ -54,23 +28,15 @@ class MusicItem extends Component {
 	isActive() {
 		const { data, playing } = this.props;
 
-		return playing === data.target;
+		return data.target in playing;
 	}
 
 	render() {
 		const { data } = this.props;
 
-		return (
-			<div
-				className={`item ${this.isActive() ? 'active' : ''}`}
-				onClick={this.executePayload}
-			>
-				<div className="item-icon">
-					<img src={data.icon ? icons[data.icon] : icons.generic} alt={data.name} />
-				</div>
-				<div className="item-text">{data.name}</div>
-			</div>
-		);
+		if(data.target !== 'off')	data.icon = 'music';
+
+		return <Item data={data} active={this.isActive()} payload={this.executePayload} />;
 	}
 }
 
@@ -78,7 +44,7 @@ MusicItem.propTypes = {
 	data: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (store, props) => {
+const mapStateToProps = store => {
 	return {
 		playing: store.appState.playing.music,
 	};

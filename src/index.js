@@ -6,6 +6,7 @@ import Routes from './router';
 
 // import any global .js or .css here
 import './css/style.css';
+import 'flexboxgrid/css/flexboxgrid.css'
 
 const app = document.getElementById('root');
 
