@@ -1,5 +1,6 @@
 import store from '../store';
 import { Howler, Howl } from 'howler';
+import * as axios from 'axios';
 
 import * as music from '../audio/music';
 import * as environments from '../audio/environments';
@@ -99,4 +100,15 @@ export function setVolume(channel = 'master', level = 0.5) {
 
 export function setTheme(color = 'pink') {
 	store.dispatch({ type: 'SET_THEME', color });
+}
+
+export function sendFeedback(from = '', subject = 'No Subject', body = 'No body') {
+	axios
+		.get('/feedback.php', { params: { from, subject, body } })
+		.then(function(response) {
+			console.log(response);
+		})
+		.catch(function(error) {
+			console.error(error);
+		});
 }

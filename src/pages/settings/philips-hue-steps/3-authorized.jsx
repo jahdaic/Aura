@@ -38,6 +38,7 @@ class Authorized extends Component {
 							<i>
 								{ lights[id].state.mode === 'streaming' ? (<span className="pink">[In Use] </span>) : '' }
 								{ !lights[id].capabilities.control.hasOwnProperty('colorgamut') ? (<span className="yellow">[Not Recommended]</span>) : '' }
+								{ lights[id].capabilities.control.colorgamuttype === 'B' ? (<span className="blue">[Limited Colors]</span>) : '' }
 							</i>
 						</div>
 						<div className="col-xs-2">
@@ -64,7 +65,7 @@ class Authorized extends Component {
 
 Authorized.propTypes = {
 	hue: PropTypes.object.isRequired,
-	lights: PropTypes.object.isRequired,
+	lights: PropTypes.array.isRequired,
 	activeLights: PropTypes.array.isRequired,
 };
 

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = props => {
 	return (
 		<nav className="row center-xs">
-			<NavLink to="/lights">
+			<NavLink to="/lights" isActive={props.location}>
 				Lights
 			</NavLink>
 

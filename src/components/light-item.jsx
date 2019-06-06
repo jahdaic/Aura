@@ -23,7 +23,9 @@ class LightItem extends Component {
 	executePayload() {
 		const { data, hue } = this.props;
 
-		hueActions.setLightsToColor(hue.activeLights, hueActions.lights[data.target]);
+		console.log(hue.lights);
+
+		hueActions.setLightsToColor(hue.activeLights, data.target);
 
 		appActions.setPlayingLight(data.target);
 	}

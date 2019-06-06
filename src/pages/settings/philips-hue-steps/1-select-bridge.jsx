@@ -24,8 +24,12 @@ class SelectBridge extends Component {
 
 		return (
 			<div>
-				<p>Select your Philips Hue bridge to connect your lights:</p>
-				
+				<div className="row">
+					<div className="col-xs-12">
+						<p>Select your Philips Hue bridge to connect your lights:</p>
+					</div>
+				</div>
+
 				{hue.bridges.map(bridge => (
 					<div key={bridge} className="row">
 						<label className="col-xs-4">{bridge}</label>
@@ -50,9 +54,13 @@ class SelectBridge extends Component {
 					</div>
 				</div>
 
-				<button type="button" onClick={hueActions.getBridges}>
-					Refresh List
-				</button>
+				<div className="row center-xs">
+					<div className="col-xs-6">
+						<button type="button" onClick={hueActions.getBridges}>
+							Refresh List
+						</button>
+					</div>
+				</div>
 			</div>
 		);
 	}

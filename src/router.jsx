@@ -1,6 +1,6 @@
 import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import { history } from './store';
 
 import Frame from './template/frame';
@@ -17,14 +17,18 @@ import Sounds from './pages/sounds';
 import Settings from './pages/settings';
 import Error from './pages/errors/404';
 
+const Default = () => <Redirect to="/lights" />;
+
 const Pages = () => (
 	<Frame>
 		<header>
-			<Title>Prestidigitation</Title>
+			<Title>
+				Prestidigitation <NavLink to="/settings"></NavLink>
+			</Title>
 			<Navbar />
 		</header>
 		<Switch>
-			<Route exact path="/" component={Lights} />
+			<Route exact path="/" component={Default} />
 			<Route path="/lights" component={Lights} />
 			<Route path="/music" component={Music} />
 			<Route path="/environments" component={Environments} />
